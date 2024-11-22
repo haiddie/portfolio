@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "../node_modules/swiper/swiper.min.css";
+@import "../node_modules/swiper/modules/pagination/pagination.min.css";
+@import "../node_modules/swiper/modules/navigation/navigation.min.css";
+
+
+
+ 
+
+.section-1{
+padding:20px;
+}

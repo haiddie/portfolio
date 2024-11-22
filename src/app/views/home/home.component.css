@@ -1,0 +1,202 @@
+.back-drop {
+    position: fixed;
+    top: 56px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 98; /* Below the menu but above other content */
+  }
+
+  .semi-transparent-black{
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+
+  .animation-container {
+    position: relative;
+  }
+  
+  .animated-text {
+    opacity: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 0.15em solid white;
+    color:white;
+    animation: typing 4s steps(40), erasing 2s steps(40) 4s infinite;
+  }
+  
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  
+  @keyframes erasing {
+    from {
+      width: 100%;
+    }
+    to {
+      width: 0;
+    }
+  }
+
+  .card-coding{
+    background-image: url('../../../assets/images/1kc1.gif');
+    background-size: cover;
+  }
+
+  .card-coding2{
+    background-image: url('../../../assets/images/services.gif');
+    background-size: contain;
+  }
+  .right-semi{
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+  }
+
+  .left-semi{
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+  }
+  span.active {
+    text-decoration: underline;
+    /* Add any additional styles you want */
+  }
+
+  .about-me-card{
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+
+  }
+
+  .education-card{
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+  }
+
+
+  .fade-in {
+    opacity: 1;
+    transition: opacity 0.5s;
+  }
+  
+  .fade-out {
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+
+  /* Animated button css */
+
+ 
+  .buttons {
+    margin-top: 50px;
+    text-align: center;
+    border-radius: 30px;
+ }
+  .blob-btn {
+    z-index: 1;
+    position: relative;
+    padding: 20px 46px;
+    margin-bottom: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    transition: color 0.5s;
+    cursor: pointer;
+    border-radius: 30px;
+ }
+  .blob-btn:before {
+    content: "";
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 30px;
+ }
+  .blob-btn:after {
+    content: "";
+    z-index: -2;
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s 0.2s;
+    border-radius: 30px;
+ }
+  .blob-btn:hover {
+    color: #fff;
+    border-radius: 30px;
+ }
+  .blob-btn:hover:after {
+    transition: all 0.3s;
+    left: 0;
+    top: 0;
+    border-radius: 30px;
+ }
+  .blob-btn__inner {
+    z-index: -1;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    background: #fff;
+ }
+  .blob-btn__blobs {
+    position: relative;
+    display: block;
+    height: 100%;
+    filter: url('#goo');
+ }
+  .blob-btn__blob {
+    position: absolute;
+    top: 2px;
+    width: 25%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 100%;
+    transform: translate3d(0, 150%, 0) scale(1.7);
+    transition: transform 0.45s;
+ }
+  @supports (filter: url('#goo')) {
+    transform: translate3d(0, 150%, 0) scale(1.4);
+ }
+  .blob-btn__blob:nth-child(1) {
+    left: 0%;
+    transition-delay: 0s;
+ }
+  .blob-btn__blob:nth-child(2) {
+    left: 30%;
+    transition-delay: 0.08s;
+ }
+  .blob-btn__blob:nth-child(3) {
+    left: 60%;
+    transition-delay: 0.16s;
+ }
+  .blob-btn__blob:nth-child(4) {
+    left: 90%;
+    transition-delay: 0.24s;
+ }
+  .blob-btn:hover .blob-btn__blob {
+    transform: translateZ(0) scale(1.7);
+ }
+  @supports (filter: url('#goo')) {
+    transform: translateZ(0) scale(1.4);
+ }

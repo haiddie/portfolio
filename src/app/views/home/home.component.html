@@ -1,0 +1,368 @@
+<header class="p-2 md:p-3 lg:p-8 fixed top-0 z-[999] w-full"
+    [ngClass]="{'bg-blue-950':menu,'semi-transparent-black':!menu}">
+    <div class="hidden md:flex flex-wrap items-center justify-end">
+        <div class="text-white text-xl mx-2 p-2 mb-2 md:mb-0 cursor-pointer" *ngFor="let item of navItems"
+            (click)="scroll(item.id)">
+            <span [class.active]="isSectionVisible(item.id)" class="capitalize">{{item.name}}</span>
+        </div>
+
+    </div>
+    <!-- <div class="md:hidden">
+        <div class="flex justify-end items-end  z-[99] ">
+            <button type="button" class="p-2" *ngIf="menu" (click)="menu=!menu">
+                <img src="../../../assets/icons/menu.png" class="h-[30px] w-[30px]" />
+            </button>
+            <button type="button" class="p-2" *ngIf="!menu" (click)="menu=!menu">
+                <img src="../../../assets/icons/close.png" class="h-[30px] w-[30px]" />
+            </button>
+        </div>
+        <div *ngIf="!menu" class="absolute z-[99] top-14 right-0 bg-black w-[200px] h-[100vh] p-4">
+            <div class="text-white text-xl p-2" (click)="scroll(item.id)" *ngFor="let item of navItems">
+                <span class="capitalize">{{item.name}}</span>
+            </div>
+
+        </div>
+    </div> -->
+</header>
+<div class="body relative mt-[100px]" [ngClass]="{'back-drop':!menu}">
+    <section id="about" class="section-1 grid grid-cols-12">
+        <div class="col-span-12 md:col-span-6 flex flex-col justify-center">
+            <div class="flex items-start justify-start">
+                <span class="text-white text-b !text-[25px] md:!text-[40px] lg:!text-[60px]">Hi there! I'm Haider
+                    Ali</span>
+            </div>
+            <div class="flex items-center justify-start">
+                <div class="text-white text-b !text-[25px] md:!text-[40px] lg:!text-[60px]">
+                    <div class="animation-container">
+                        <p>I'm a
+                            <span class="animated-text">{{ currentText }}</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-start justify-start">
+                <div class="buttons">
+                    <a href="../../../assets/resume/Resume-Haider-Ali.pdf" download="file.pdf">
+                        <button class="blob-btn" type="button">
+                            Click Me
+                            <span class="blob-btn__inner">
+                                <span class="blob-btn__blobs">
+                                    <span class="blob-btn__blob"></span>
+                                    <span class="blob-btn__blob"></span>
+                                    <span class="blob-btn__blob"></span>
+                                    <span class="blob-btn__blob"></span>
+                                </span>
+                            </span>
+                        </button>
+                    </a>
+                    <br />
+
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="hidden md:block">
+                        <defs>
+                            <filter id="goo">
+                                <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur>
+                                <feColorMatrix in="blur" mode="matrix"
+                                    values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7" result="goo"></feColorMatrix>
+                                <feBlend in2="goo" in="SourceGraphic" result="mix"></feBlend>
+                            </filter>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="col-span-12 md:col-span-6 flex items-center justify-center">
+            <div
+                class="w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] my-6 md:my-0 semi-transparent-black rounded-full">
+                <img src="../../../assets/images/Subject.png" class="object-contain w-full h-full rounded-full"
+                    alt="Image" />
+            </div>
+        </div>
+
+        <div class="col-span-12 ">
+
+            <div class="border-gray border-[0.1px] semi-transparent-black p-4 about-me-card w-full md:w-[500px]">
+                <p class="w-[100%] text-white text-[30px] md:text-[40px] lg:text-[50px] leading-2">About Me</p>
+                <p class=" text-white text-[15px]">
+                    <span class="text-[30px]">“</span>
+                    I'm a passionate and skilled MEAN Stack Developer with a strong foundation in building
+                    dynamic and interactive web applications. My journey in the world of programming has led me to
+                    specialize in the MEAN & MERN stack, a powerful combination of technologies that encompasses
+                    MongoDB, Ionic,
+                    Express.js, Angular,React and Node.js.
+                    <span class="text-[30px]">”</span>
+                </p>
+            </div>
+        </div>
+
+
+        <div class="col-span-12 my-[40px]">
+            <div class="flex flex-col md:flex-row justify-end items-center align-middle md:items-start">
+                <img src="../../../assets/images/grad.jpeg"
+                    class="md:h-[300px] md:w-[300px] object-cover rounded-full md:mr-2 mb-2 md:mb-0 md:pr-2">
+                <div
+                    class="border-gray border-[0.1px] education-card semi-transparent-black mt-[40px] p-4 w-full md:w-[500px]">
+                    <p class="text-white text-[30px] md:text-[40px] lg:text-[50px] leading-2">Education</p>
+                    <p class="text-white text-[15px]">
+                        <span class="text-[30px]">“</span>
+                        I have done my Bachelors in Computer Science from Governemnt College University Lahore.
+                        Batch 2016-20
+                        <span class="text-[30px]">”</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <section [ngClass]="{'fade-in': isSectionVisible('experience'), 'fade-out': !isSectionVisible('experience')}"
+        id="experience" class="section-2 grid grid-cols-12 my-10 lg:my-[100px]">
+        <div class="col-span-12">
+            <div class="card-coding h-[200px] md:h-[400px] lg:h-[600px] flex justify-center align-middle items-center">
+                <div
+                    class="h-[150px] w-[150px] md:h-[350px] md:w-[350px] lg:h-[550px] lg:w-[550px] rounded-full bg-blue-950 flex justify-center align-middle items-center">
+                    <p class="text-white text-[30px] md:text-[50px] lg:text-[80px]">Experience</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-span-12 md:col-span-6 m-[20px]">
+            <div
+                class="border-gray border-[0.1px] semi-transparent-black p-4 h-[300px] rounded-lg w-full flex align-middle justify-center items-center">
+                <img src="../../../assets/icons/angular-icon.png" class="h-[100px] w-[100px] mr-2" />
+                <p class=" text-white text-[12px] md:text-[15px]">
+                    <span class="text-[30px]">“</span>
+                    I have a proven track record of developing robust and dynamic applications using Angular, I've
+                    crafted innovative solutions that seamlessly blend
+                    user-centric design with cutting-edge technology.
+                    With a workabled experience of 3+ Years
+                    <span class="text-[30px]">”</span>
+                </p>
+            </div>
+
+
+        </div>
+
+        <div class="col-span-12 md:col-span-6 m-[20px]">
+            <div
+                class="border-gray border-[0.1px] semi-transparent-black p-4 h-[300px] rounded-lg w-full flex align-middle justify-center items-center">
+                <img src="../../../assets/icons/ionic-icon.svg" class="h-[100px] w-[100px] mr-2" />
+                <p class=" text-white  text-[12px] md:text-[15px]">
+                    <span class="text-[30px]">“</span>
+                    With over 3+ Years of dedicated experience in Ionic application development, I've honed my skills in
+                    crafting dynamic and cross-platform mobile applications that seamlessly blend functionality, design,
+                    and performance.
+                    <span class="text-[30px]">”</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="col-span-12 md:col-span-6 m-[20px]">
+            <div
+                class="border-gray border-[0.1px] semi-transparent-black p-4 h-[300px] rounded-lg w-full flex align-middle justify-center items-center">
+                <img src="../../../assets/icons/nodejs-icon.png" class="h-[100px] w-[100px] mr-2" />
+                <p class=" text-white  text-[12px] md:text-[15px]">
+                    <span class="text-[30px]">“</span>
+                    Throughout my career, I've leveraged Node.js to design and develop backend architectures that
+                    prioritize efficiency, maintainability, and security. I'm well-versed in creating RESTful APIs that
+                    facilitate seamless communication between frontend and backend components, ensuring smooth data flow
+                    and enhancing user experiences.
+                    <span class="text-[30px]">”</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="col-span-12 md:col-span-6 m-[20px]">
+            <div
+                class="border-gray border-[0.1px] semi-transparent-black p-4 h-[300px] rounded-lg w-full flex align-middle justify-center items-center">
+                <img src="../../../assets/icons/React-icon.png" class="h-[100px] w-[100px] mr-2" />
+                <p class=" text-white  text-[12px] md:text-[15px]">
+                    <span class="text-[30px]">“</span>
+                    My proficiency extends to managing state using both local component state and global state
+                    management libraries like Redux. This ensures that my applications maintain a smooth and responsive
+                    user experience even in the face of complex interactions and data flows.
+                    With a workabled experience of 2 years.
+                    <span class="text-[30px]">”</span>
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+
+    <section [ngClass]="{'fade-in': isSectionVisible('services'), 'fade-out': !isSectionVisible('services')}"
+        id="services" class=" section-3 grid grid-cols-12 my-10 lg:my-[100px]">
+        <div class="col-span-12 ">
+            <div
+                class="card-coding2 my-2 h-[200px] md:h-[400px] lg:h-[600px] flex justify-center align-middle items-center">
+                <div
+                    class="h-[150px] w-[150px] md:h-[350px] md:w-[350px] lg:h-[550px] lg:w-[550px] rounded-full bg-blue-950 flex justify-center align-middle items-center">
+                    <p class="text-white text-[30px] md:text-[50px] lg:text-[80px]">Services</p>
+                </div>
+            </div>
+
+            <swiper #swiper [config]="config" class="my-2">
+                <ng-template swiperSlide *ngFor="let slide of services; let i = index">
+                    <div class="grid grid-cols-12">
+                        <div class="col-span-12 md:col-span-6 flex justify-center align-top items-center">
+                            <img [src]="slide.src" class="h-[150px] md:h-full" />
+                        </div>
+                        <div class="col-span-12 md:col-span-6 flex justify-center align-middle items-center mx-[20px]">
+                            <div
+                                class="border-gray border-[0.1px] semi-transparent-black p-4 my-auto h-[400px] rounded-lg w-full flex align-middle justify-center items-center">
+
+                                <p class=" text-white text-[30px]">
+                                    <span>{{slide.name}}</span>
+                                    <br>
+                                    <span>“</span>
+                                    <span class="text-[12px]">{{slide.description}}</span>
+                                    <span>”</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+
+            </swiper>
+        </div>
+    </section>
+
+
+    <section [ngClass]="{'fade-in': isSectionVisible('projects'), 'fade-out': !isSectionVisible('projects')}"
+        id="projects" class=" section-3 grid grid-cols-12 my-10 lg:my-[100px]">
+        <div class="col-span-12 ">
+
+            <div class="flex justify-center align-middle items-center">
+                <p class="text-white text-[30px] md:text-[50px] lg:text-[80px]">
+                    <span class="text-blue-400 mx-2">{{</span> <u>Projects</u><span class="text-blue-400 mx-2">}}</span>
+                </p>
+            </div>
+
+            <div class="text-center semi-transparent-black my-3 p-4" *ngFor="let slide of projects;  let i = index">
+
+                <div class="w-full flex justify-center align-middle items-center" *ngIf="slide.name!==''">
+                    <img [src]="slide.name" class="rounded-full !h-[50px]" />
+                </div>
+
+
+                <swiper #swiper [config]="config2" class="my-2">
+                    <ng-template swiperSlide *ngFor="let project of slide.images">
+                        <div class="grid grid-cols-12">
+                            <div class="col-span-12 lg:col-span-7 flex justify-center align-top items-center">
+                                <img [src]="project.src" class="h-[250px] md:h-[500px] rounded-lg" />
+                            </div>
+                            <div
+                                class="col-span-12 lg:col-span-5 flex justify-center align-middle items-center m-[20px]">
+                                <div
+                                    class="border-gray border-[0.1px] semi-transparent-black p-4 my-auto h-[400px] rounded-lg w-full flex align-middle justify-center items-center">
+
+                                    <p class=" text-white text-[25px]">
+                                        {{project.name}}
+                                        <br>
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+
+                </swiper>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section id="contact" class="section-3 grid grid-cols-12 mt-10 lg:mt-[100px]
+    semi-transparent-black p-4 my-auto h-full rounded-lg w-full">
+        <div class="col-span-12 md:col-span-6">
+            <!-- <p class="w-[100%] text-white text-[30px] md:text-[40px] lg:text-[50px] mx-[20px] leading-2">Contact Me
+            </p>
+            <p class=" text-white text-[15px] md:text-[25px] p-2">
+
+                <span>Write an Email to</span>
+                <span class="text-blue-400 mx-2">{{</span>
+                <span class="text-[15px] md:text-[25px] mx-2">itshaider1998@gmail.com</span>
+                <span class="text-blue-400 mx-2">}}</span>
+            </p>
+
+            <p class=" text-white text-[15px] md:text-[25px] p-2">
+
+                <span>Call me at </span>
+                <span class="text-blue-400 mx-2">{{</span>
+                <span class="text-[15px] md:text-[25px] mx-2">+923104002205</span>
+                <span class="text-blue-400 mx-2">}}</span>
+            </p> -->
+            <p class=" text-white text-[15px] md:text-[25px] p-2">
+                My Social Platform
+            </p>
+            <div class="w-full md:w-[500px]">
+                <div
+                    class="border-white  p-4 border-[0.2px] rounded-full flex justify-center align-middle items-center">
+                    <a href="https://www.facebook.com/haiddie">
+                        <img src="../../../assets/icons/facebook-logo.png"
+                            class="cursor-pointer h-[50px] rounded-full  bg-white w-[50px] mx-2" />
+                    </a>
+                    <a href="https://www.linkedin.com/in/haider-ali-23184a170/">
+                        <img src="../../../assets/icons/linkedin-logo.png"
+                            class="cursor-pointer h-[50px] rounded-full  bg-white w-[50px] mx-2" />
+                    </a>
+                    <a href="https://github.com/haiddie">
+                        <img src="../../../assets/icons/github-icon.png"
+                            class="cursor-pointer h-[50px] rounded-full  bg-white w-[50px] mx-2" /></a>
+                </div>
+            </div>
+
+            <p class="text-white">© 2023 HAIDER ALI. ALL RIGHTS RESERVED</p>
+
+        </div>
+
+
+        <div class="col-span-12 md:col-span-6">
+            <div class="bg-white h-[550px] w-full rounded-lg shadow-sm">
+
+                <h1 class="text-[30px] p-4">Connect With Me Now !</h1>
+
+                <form [formGroup]="emailForm" method="POST">
+                    <div class="grid grid-cols-12 p-4">
+                        <div class="col-span-12">
+                            <label>
+                                Your name:
+                                <input type="text" name="name" formControlName="name"
+                                    class="border-gray-400 border-[0.5px] rounded-lg w-full h-[60px] p-2">
+                            </label>
+                        </div>
+                        <div class="col-span-12">
+                            <label>
+                                Your email:
+                                <input type="email" name="email" formControlName="email"
+                                    class="border-gray-400 border-[0.5px] rounded-lg w-full h-[60px] p-2">
+                            </label>
+                        </div>
+                        <div class="col-span-12">
+                            <label>
+                                Your message:
+                                <textarea name="message" formControlName="message"
+                                    class="border-gray-400 border-[0.5px] rounded-lg w-full h-[200px] p-2"></textarea>
+                            </label>
+                        </div>
+                        <div class="col-span-12 ">
+                            <!-- your other form fields go here -->
+                            <div class="flex justify-right align-middle items-end">
+                                <button type="submit" (click)="sendEmail()"
+                                    class="bg-blue-950 text-white p-2 rounded-lg w-[100px]">Send</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </form>
+            </div>
+        </div>
+
+
+    </section>
+
+
+</div>
